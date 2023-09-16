@@ -1,0 +1,75 @@
+[
+  [
+    {
+      "name": "projects",
+      "comment": "List of projects",
+      "color": "bg-warning-subtle",
+      "columns": [
+        "id",
+        "title",
+        "creator_user_id -> users",
+        "created_at"
+      ]
+    },
+    {
+      "name": "tasks",
+      "comment": "List of tasks",
+      "color": "bg-warning-subtle",
+      "columns": [
+        "id",
+        "title",
+        "content",
+        "project_id -> projects",
+        "creator_user_id -> users",
+        "created_at"
+      ]
+    }
+  ],
+  [
+    {
+      "name": "tags",
+      "comment": "List of tags",
+      "color": "bg-success-subtle",
+      "columns": [
+        "id",
+        "title",
+        "type",
+        "created_at"
+      ]
+    },
+    {
+      "name": "projects_tags_pivot",
+      "comment": "Links between projects and tags",
+      "color": "bg-success-subtle",
+      "columns": [
+        "project_id -> projects",
+        "tag_id -> tags"
+      ]
+    },
+    {
+      "name": "tasks_tags_pivot",
+      "comment": "Links between tasks and tags",
+      "color": "bg-success-subtle",
+      "columns": [
+        "task_id -> tasks",
+        "tag_id -> tags"
+      ]
+    }
+  ],
+  [
+    {
+      "name": "users",
+      "comment": "List of users",
+      "color": "bg-info-subtle",
+      "columns": [
+        "id",
+        "email",
+        "password_hash",
+        "first_name",
+        "last_name",
+        "is_active",
+        "created_at"
+      ]
+    }
+  ]
+]

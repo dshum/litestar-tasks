@@ -1,0 +1,32 @@
+html, body {
+  font-family: "Inter", sans-serif;
+}
+
+body {
+  background-color: rgb(241, 245, 249);
+}
+
+h1 {
+  font-family: "Roboto Slab", sans-serif;
+  font-weight: normal;
+  color: #00425A;
+}
+
+.brand {
+  font-family: "Patua One", sans-serif;
+  color: coral;
+}
+
+.gray-column {
+  background-color: rgb(226, 232, 240);
+}
+
+.avatar {
+  width: 1.5rem;
+  height: 1.5rem;
+  line-height: 1.5rem;
+  border-radius: 50%;
+  text-align: center;
+  vertical-align: middle;
+  font-size: 80%;
+}

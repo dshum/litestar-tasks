@@ -1,0 +1,28 @@
+{% extends "layouts/default.html" %}
+
+{% block content %}
+  <div class="container">
+    <h1 class="display-6">DB tables</h1>
+
+    <div class="row align-items-start g-4">
+      {% for col in tables %}
+        <div class="col">
+          {% for table in col %}
+            <div class="card my-4 {{ table.color }}">
+              <div class="card-body">
+                <h5 class="card-title">{{ table.name }}</h5>
+                <p class="card-text">{{ table.comment }}</p>
+              </div>
+
+              <ul class="list-group list-group-flush">
+                {% for column in table.columns %}
+                  <li class="list-group-item">{{ column }}</li>
+                {% endfor %}
+              </ul>
+            </div>
+          {% endfor %}
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+{% endblock %}
