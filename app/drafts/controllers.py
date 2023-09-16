@@ -6,12 +6,12 @@ from litestar import Controller, get
 from litestar.response import Template
 from pydantic import UUID4
 
-from app.settings import BASE_DIR
+from core.settings import BASE_DIR, Settings
 
 
 class DraftController(Controller):
     @get(path="/board", name="board")
-    async def get_board(self) -> Template:
+    async def get_board(self, settings: Settings) -> Template:
         return Template(template_name="board.html")
 
     @get(path="/db", name="db")

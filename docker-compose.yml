@@ -1,0 +1,46 @@
+version: '3.8'
+
+services:
+  web:
+    container_name: litestar_tasks
+    env_file: .env
+    build:
+      context: .
+      dockerfile: Dockerfile
+    command: bash -c "while !</dev/tcp/db/${DB_INTERNAL_PORT:-5432}; do sleep 1; done; uvicorn main:app --reload --host 0.0.0.0 --port 8000"
+    volumes:
+      - ./app:/app
+    ports:
+      - "${WEB_EXTERNAL_PORT:-8000}:8000"
+    depends_on:
+      - db
+      - redis
+    restart: unless-stopped
+    tty: true
+
+  redis:
+    container_name: litestar_tasks_redis
+    image: redis:latest
+    ports:
+      - "${REDIS_EXTERNAL_PORT:-6379}:6379"
+    restart: unless-stopped
+    tty: true
+
+  db:
+    container_name: litestar_tasks_db
+    image: postgres:15-alpine
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+    ports:
+      - "${DB_EXTERNAL_PORT:-5432}:5432"
+    expose:
+      - 5432
+    environment:
+      POSTGRES_USER: ${DATABASE_USER:-postgres}
+      POSTGRES_PASSWORD: ${DATABASE_PASSWORD:-password}
+      POSTGRES_DB: ${DATABASE_NAME:-django_biology}
+    restart: unless-stopped
+    tty: true
+
+volumes:
+  postgres_data:
