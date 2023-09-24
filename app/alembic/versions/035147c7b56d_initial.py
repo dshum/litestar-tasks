@@ -1,19 +1,19 @@
-"""Board
+"""initial
 
-Revision ID: 9260fb8fcdce
-Revises: eef1851eca0d
-Create Date: 2023-09-23 18:24:10.325832
+Revision ID: 035147c7b56d
+Revises: 
+Create Date: 2023-09-24 01:41:42.165985
 
 """
 from typing import Sequence, Union
 
+from litestar.contrib.sqlalchemy.types import DateTimeUTC
 from alembic import op
 import sqlalchemy as sa
-from litestar.contrib.sqlalchemy.types import DateTimeUTC
 
 # revision identifiers, used by Alembic.
-revision: str = '9260fb8fcdce'
-down_revision: Union[str, None] = 'eef1851eca0d'
+revision: str = '035147c7b56d'
+down_revision: Union[str, None] = None
 branch_labels: Union[str, Sequence[str], None] = None
 depends_on: Union[str, Sequence[str], None] = None
 
