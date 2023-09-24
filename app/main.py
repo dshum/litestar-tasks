@@ -10,7 +10,7 @@ from litestar.template import TemplateConfig
 
 from api.router import create_router
 from lib import sentry
-from lib.commands.test import CLIPlugin
+from lib.commands.test import TestCLIPlugin
 from lib.db import sqlalchemy_plugin
 from lib.exceptions import (
     http_exception_handler,
@@ -29,7 +29,7 @@ app = Litestar(
     route_handlers=[index, create_router()],
     dependencies={},
     on_startup=[sentry.configure, sqlalchemy_plugin.on_startup],
-    plugins=[sqlalchemy_plugin.plugin, CLIPlugin()],
+    plugins=[sqlalchemy_plugin.plugin, TestCLIPlugin()],
     exception_handlers={
         ValidationException: validation_exception_handler,
         NotFoundException: not_found_exception_handler,
