@@ -1,0 +1,9 @@
+{% extends "layouts/default.html" %}
+
+{% block content %}
+  <div class="container">
+    <h1>Page Not Found</h1>
+    <p>The page you're looking for doesn't seem to exist anymore...<br>
+      <a href="{{ url_for('index') }}">Return to the homepage</a></p>
+  </div>
+{% endblock %}
