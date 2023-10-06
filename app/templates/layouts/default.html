@@ -9,10 +9,11 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Patua One">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto Slab">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter">
+  <link rel="shortcut icon" type="image/png" href="{{ url_for_static_asset('static', file_path='images/favicon.png') }}">
 </head>
 <body class="d-flex flex-column h-100">
 <div class="container">
-  <header class="py-3 mb-4 border-bottom d-flex flex-wrap align-items-center justify-content-center justify-content-md-between">
+  <header class="py-3 mb-2 border-bottom d-flex flex-wrap align-items-center justify-content-center justify-content-md-between">
     <div class="col-md-3 mb-2 mb-md-0">
       <a href="{{ url_for('index') }}" class="brand icon-link d-inline-flex text-decoration-none rounded-2 fs-3">
         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-nut-fill" viewBox="0 0 16 16">
@@ -36,7 +37,7 @@
   </header>
 </div>
 
-<main class="flex-shrink-0">
+<main class="my-2 flex-shrink-0">
   {% block content %}{% endblock %}
 </main>
 

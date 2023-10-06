@@ -3,7 +3,7 @@ import os
 from pathlib import Path
 
 from litestar import Controller, get
-from litestar.exceptions import HTTPException
+from litestar.exceptions import HTTPException, LitestarException
 from litestar.response import Template
 from pydantic import UUID4
 
@@ -28,6 +28,6 @@ class DraftController(Controller):
     async def get_links(self) -> Template:
         return Template(template_name="links.html")
 
-    @get(path="/error", name="error")
-    async def get_error(self) -> Template:
-        raise HTTPException("Test error")
+    @get(path="/error/{name:str}", name="error")
+    async def get_error(self, name: str) -> Template:
+        raise LitestarException(name)

@@ -7,6 +7,7 @@ __all__ = ["Project", "Task"]
 
 class Project(BigIntAuditBase):
     title: Mapped[str]
+    description: Mapped[Text] = mapped_column(Text)
     tasks: Mapped[list["Task"]] = relationship(back_populates="project", lazy="selectin")
 
 
