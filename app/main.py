@@ -8,7 +8,7 @@ from litestar.static_files import StaticFilesConfig
 from litestar.status_codes import HTTP_500_INTERNAL_SERVER_ERROR
 from litestar.template import TemplateConfig
 
-from api.router import create_router
+from controllers import create_router, create_html_router
 from lib import sentry, settings
 from lib.commands.test import TestCLIPlugin
 from lib.db import sqlalchemy_plugin
@@ -32,7 +32,7 @@ async def favicon() -> str:
 
 app = Litestar(
     debug=settings.app.DEBUG,
-    route_handlers=[index, favicon, create_router()],
+    route_handlers=[index, favicon, create_router(), create_html_router()],
     dependencies={},
     on_startup=[sentry.configure],
     plugins=[sqlalchemy_plugin.plugin, TestCLIPlugin()],
@@ -43,7 +43,7 @@ app = Litestar(
         # HTTP_500_INTERNAL_SERVER_ERROR: internal_server_error_handler,
     },
     template_config=TemplateConfig(
-        directory=[Path("templates"), Path("domain/drafts/templates"), Path("domain/board/templates")],
+        directory=[Path("templates")],
         engine=JinjaTemplateEngine,
     ),
     static_files_config=[
